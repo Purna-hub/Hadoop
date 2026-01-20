@@ -1,0 +1,64 @@
+
+core-site.xml
+hadoop-env.cmd
+hdfs-site.xml
+mapred-site.xml
+yarn-site.xml
+
+<-------- core-site.xml ----------->
+
+<property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://localhost:9000</value>
+</property>
+
+<---------- hadoop-env.cmd ---------->
+set JAVA_HOME = C/Java/JDK 1.8.(please copy the correct path)
+
+
+<---------hdfs-site.xml ------------->
+
+<property>
+  <name>dfs.replication</name>
+  <value>1</value>
+</property>
+<property>
+  <name>dfs.namenode.name.dir</name>
+  <value>C:\hadoop-3.3.6\data\namenode</value>
+</property>
+<property>
+  <name>dfs.datanode.data.dir</name>
+  <value>C:\hadoop-3.3.6\data\datanode</value>
+</property>
+
+
+<--------------- mapred-site.xml -------------->
+<property>
+  <name>mapreduce.framework.name</name>
+  <value>yarn</value>
+</property>
+
+
+<-------------- yarn-site.xml ---------------->
+
+<configuration>
+<property>
+    <name>yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage</name>
+    <value>98.5</value>
+</property>
+
+<property>
+  <name>yarn.nodemanager.aux-services</name>
+  <value>mapreduce_shuffle</value>
+</property>
+<property>
+  <name>yarn.nodemanager.auxservices.mapreduce.shuffle.class</name>
+  <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+</property>
+
+<property>
+  <name>yarn.nodemanager.disk-health-checker.enable</name>
+  <value>false</value>
+</property>
+
+</configuration>

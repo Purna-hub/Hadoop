@@ -1,0 +1,26 @@
+compilation:
+
+javac -classpath "C:\hadoop-3.3.6\share\hadoop\common\*;C:\hadoop-3.3.6\share\hadoop\common\lib\*;C:\hadoop-3.3.6\share\hadoop\hdfs\*;C:\hadoop-3.3.6\share\hadoop\hdfs\lib\*;C:\hadoop-3.3.6\share\hadoop\mapreduce\*;C:\hadoop-3.3.6\share\hadoop\mapreduce\lib\*;C:\hadoop-3.3.6\share\hadoop\yarn\*;C:\hadoop-3.3.6\share\hadoop\yarn\lib\*" Job1_PartialMultiply.java Job2_SumMatrix.java
+
+
+Jar Creation:
+
+jar cf matrix-mr.jar Job1_PartialMultiply*.class Job2_SumMatrix*.class
+
+
+
+hdfs dfs -rm -r /input_matix
+hdfs dfs -mkdir /input_matix
+hdfs dfs -put matrix.txt /input_matix
+
+
+4️⃣ Run Job-1 again
+hdfs dfs -rm -r /temp_matix
+hadoop jar matrix-mr.jar Job1_PartialMultiply /input_matix /temp_matix
+
+5️⃣ Run Job-2
+hdfs dfs -rm -r /output_matix
+hadoop jar matrix-mr.jar Job2_SumMatrix /temp_matix /output_matix
+
+6️⃣ View final output
+hdfs dfs -cat /output_matix/part-r-00000

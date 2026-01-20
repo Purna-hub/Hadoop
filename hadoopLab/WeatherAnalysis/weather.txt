@@ -1,0 +1,5 @@
+Location,Date,Temperature
+Hyderabad,2024-01-01,32
+Hyderabad,2024-01-01,30
+Delhi,2024-01-01,25
+Delhi,2024-01-01,27
